@@ -1,12 +1,14 @@
 import sys
 
+# general idea: for each character in pattern find a index that corresponds
+# to the longest prefix matching the longest suffix ending that particular character
+# reference: https://binary-baba.medium.com/string-matching-kmp-algorithm-27c182efa387
 def build_kmp_table(pattern):
     table = [0] * len(pattern)
     i = 1
     mismatch_index = 0
 
     while i < len(pattern):
-        #
         if pattern[i] == pattern[mismatch_index]:
             mismatch_index += 1
             table[i] = mismatch_index
@@ -25,6 +27,7 @@ def kmp_search(text, pattern):
     index_pattern = 0
     while index_text < len(text):
         if text[index_text] != pattern[index_pattern]:
+            # we haven't matched a single character of pattern
             if index_pattern == 0:
                 index_text += 1
             else:
