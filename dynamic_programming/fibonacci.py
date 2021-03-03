@@ -38,4 +38,3 @@ if __name__ == "__main__":
     #num = fib_memoize(int(sys.argv[1]), [None] * (int(sys.argv[1]) + 1))
     #num = fib(int(sys.argv[1]))
     print(num)
-
